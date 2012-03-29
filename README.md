@@ -6,6 +6,22 @@ As the title suggests: `Mongoid::Paperclip` makes it easy to hook up [Paperclip]
 This is actually easier and faster to set up than when using Paperclip and the ActiveRecord ORM.
 This example assumes you are using **Ruby on Rails 3** and **Bundler**. However it doesn't require either.
 
+Paperclip 3.0
+-------------
+Paperclip 3.0 introduces a non-backward compatible change in your attachment
+path. This will help to prevent attachment name clashes when you have
+multiple attachments with the same name. If you didn't alter your
+attachment's path and are using Paperclip's default, you'll have to add
+`:path` and `:url` to your `has_attached_file` definition. For example:
+
+    has_attached_file :avatar,
+      :path => ":rails_root/public/system/:attachment/:id/:style/:filename",
+      :url => "/system/:attachment/:id/:style/:filename"
+
+Rails 3 Dummy app
+-----------------
+This project should contain a Rails 3 dummy app or siilar in order to test the functionality.
+
 
 Setting it up
 -------------
